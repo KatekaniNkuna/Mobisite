@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "za.co.vodacom.mobisite"
+    },
+    "jhipsterVersion": "6.10.3",
+    "applicationType": "monolith",
+    "baseName": "Mobisite",
+    "packageName": "za.co.vodacom.mobisite",
+    "packageFolder": "za/co/vodacom/mobisite",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZDIyYzNlNzMzOTk0OGIxMDc5ZjY2NjBkZDE4Yzc2ZjliOWNhZWNiYTFkNmJjZmQzZDA5YjZmMmQzMDFiNDgzYzMzNjBhYzNmOWM2ZGE4NTNkMGNlNGRhODE5ZjU5ZTIwODEyOGFiYWY4ZTdmNGYzMzg2OTMyZGZlM2U0ZGI5YmM=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1611298572356,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
