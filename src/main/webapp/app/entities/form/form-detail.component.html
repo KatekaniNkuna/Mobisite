@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="form">
+            <h2><span>Form</span> {{ form.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Competitor</span></dt>
+                <dd>
+                    <span>{{ form.competitor }}</span>
+                </dd>
+                <dt><span>Province</span></dt>
+                <dd>
+                    <span>{{ form.province }}</span>
+                </dd>
+                <dt><span>Image</span></dt>
+                <dd>
+                    <div *ngIf="form.image">
+                        <a (click)="openFile(form.imageContentType, form.image)">
+                            <img [src]="'data:' + form.imageContentType + ';base64,' + form.image" style="max-width: 100%;" alt="form image"/>
+                        </a>
+                        {{ form.imageContentType }}, {{ byteSize(form.image) }}
+                    </div>
+                </dd>
+                <dt><span>Offer Date</span></dt>
+                <dd>
+                    <span>{{ form.offerDate }}</span>
+                </dd>
+                <dt><span>Product Type</span></dt>
+                <dd>
+                    <span>{{ form.productType }}</span>
+                </dd>
+                <dt><span>Type Of Offer</span></dt>
+                <dd>
+                    <span>{{ form.typeOfOffer }}</span>
+                </dd>
+                <dt><span>Offer Type</span></dt>
+                <dd>
+                    <span>{{ form.offerType }}</span>
+                </dd>
+                <dt><span>Offer Purchase Limitation</span></dt>
+                <dd>
+                    <span>{{ form.offerPurchaseLimitation }}</span>
+                </dd>
+                <dt><span>Nature OF Offer</span></dt>
+                <dd>
+                    <span>{{ form.natureOFOffer }}</span>
+                </dd>
+                <dt><span>Offer Price</span></dt>
+                <dd>
+                    <span>{{ form.offerPrice }}</span>
+                </dd>
+                <dt><span>Offer Validity</span></dt>
+                <dd>
+                    <span>{{ form.offerValidity }}</span>
+                </dd>
+                <dt><span>Offer Allocation</span></dt>
+                <dd>
+                    <span>{{ form.offerAllocation }}</span>
+                </dd>
+                <dt><span>Offer End Date</span></dt>
+                <dd>
+                    <span>{{ form.offerEndDate }}</span>
+                </dd>
+                <dt><span>Risk Of Market Share Loss</span></dt>
+                <dd>
+                    <span>{{ form.riskOfMarketShareLoss }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/form', form.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

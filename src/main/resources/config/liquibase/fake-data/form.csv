@@ -1,0 +1,11 @@
+id;competitor;province;image;image_content_type;offer_date;product_type;type_of_offer;offer_type;offer_purchase_limitation;nature_of_offer;offer_price;offer_validity;offer_allocation;offer_end_date;risk_of_market_share_loss
+1;MTN;Gauteng;../fake-data/blob/hipster.png;image/png;2021-01-21T15:09:45;Other;Provincial;Prepaid;SingleBearer;NewCustomers;60227;OneWeek;11054;2021-01-21T20:11:10;High
+2;Other;Gauteng;../fake-data/blob/hipster.png;image/png;2021-01-21T19:05:26;Other;Nationwide;Prepaid;Intergrated;RechargOffer;62869;OneMonth;65831;2021-01-21T19:58:14;Low
+3;MTN;Gauteng;../fake-data/blob/hipster.png;image/png;2021-01-21T17:42:13;Data;Provincial;Postpaid;SingleBearer;RechargOffer;81892;OneDay;60670;2021-01-21T13:08:55;Low
+4;Telkom;Gauteng;../fake-data/blob/hipster.png;image/png;2021-01-21T16:04:17;Voice;Nationwide;Postpaid;SingleBearer;RechargOffer;73706;OneMonth;85462;2021-01-21T21:39:09;Low
+5;Telkom;Gauteng;../fake-data/blob/hipster.png;image/png;2021-01-21T19:55:11;Data;Provincial;Prepaid;All;RechargOffer;8319;OneDay;24629;2021-01-21T18:58:00;Low
+6;Other;Gauteng;../fake-data/blob/hipster.png;image/png;2021-01-22T05:53:24;Data;LocationBased;Prepaid;All;RechargOffer;77018;OneWeek;9469;2021-01-22T01:10:08;Low
+7;Telkom;Gauteng;../fake-data/blob/hipster.png;image/png;2021-01-21T19:05:37;Data;LocationBased;Postpaid;SingleBearer;RechargOffer;16467;OneWeek;91180;2021-01-21T14:11:48;High
+8;Telkom;Gauteng;../fake-data/blob/hipster.png;image/png;2021-01-21T17:02:10;Fibre;Nationwide;Prepaid;Intergrated;NewCustomers;69434;OneDay;50650;2021-01-22T03:03:05;Medium
+9;MTN;Limpopo;../fake-data/blob/hipster.png;image/png;2021-01-21T09:41:56;Other;Provincial;Postpaid;Intergrated;NewCustomers;49707;OneMonth;9102;2021-01-22T04:49:03;High
+10;Telkom;Limpopo;../fake-data/blob/hipster.png;image/png;2021-01-21T17:27:05;Voice;Provincial;Postpaid;Intergrated;NewCustomers;46582;OneDay;87236;2021-01-21T18:14:39;High

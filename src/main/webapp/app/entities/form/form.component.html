@@ -1,0 +1,92 @@
+<div>
+    <h2 id="page-heading">
+        <span>Forms</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-form" [routerLink]="['/form/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Form
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="forms?.length === 0">
+        <span>No forms found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="forms && forms.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Competitor</span></th>
+                    <th scope="col" ><span>Province</span></th>
+                    <th scope="col" ><span>Image</span></th>
+                    <th scope="col" ><span>Offer Date</span></th>
+                    <th scope="col" ><span>Product Type</span></th>
+                    <th scope="col" ><span>Type Of Offer</span></th>
+                    <th scope="col" ><span>Offer Type</span></th>
+                    <th scope="col" ><span>Offer Purchase Limitation</span></th>
+                    <th scope="col" ><span>Nature OF Offer</span></th>
+                    <th scope="col" ><span>Offer Price</span></th>
+                    <th scope="col" ><span>Offer Validity</span></th>
+                    <th scope="col" ><span>Offer Allocation</span></th>
+                    <th scope="col" ><span>Offer End Date</span></th>
+                    <th scope="col" ><span>Risk Of Market Share Loss</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let form of forms ;trackBy: trackId">
+                    <td><a [routerLink]="['/form', form.id, 'view']">{{ form.id }}</a></td>
+                    <td>{{ form.competitor }}</td>
+                    <td>{{ form.province }}</td>
+                    <td>
+                        <a *ngIf="form.image" (click)="openFile(form.imageContentType, form.image)">
+                            <img [src]="'data:' + form.imageContentType + ';base64,' + form.image" style="max-height: 30px;" alt="form image"/>
+                        </a>
+                        <span *ngIf="form.image">{{ form.imageContentType }}, {{ byteSize(form.image) }}</span>
+                    </td>
+                    <td>{{ form.offerDate | date:'medium' }}</td>
+                    <td>{{ form.productType }}</td>
+                    <td>{{ form.typeOfOffer }}</td>
+                    <td>{{ form.offerType }}</td>
+                    <td>{{ form.offerPurchaseLimitation }}</td>
+                    <td>{{ form.natureOFOffer }}</td>
+                    <td>{{ form.offerPrice }}</td>
+                    <td>{{ form.offerValidity }}</td>
+                    <td>{{ form.offerAllocation }}</td>
+                    <td>{{ form.offerEndDate | date:'medium' }}</td>
+                    <td>{{ form.riskOfMarketShareLoss }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/form', form.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/form', form.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(form)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

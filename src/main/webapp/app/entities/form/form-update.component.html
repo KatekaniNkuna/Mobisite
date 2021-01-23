@@ -1,0 +1,245 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-form-heading">Create or edit a Form</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_competitor">Competitor</label>
+                    <select class="form-control" name="competitor" formControlName="competitor" id="field_competitor">
+                        <option value="MTN">MTN</option>
+                        <option value="Telkom">Telkom</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div *ngIf="editForm.get('competitor')!.invalid && (editForm.get('competitor')!.dirty || editForm.get('competitor')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('competitor')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_province">Province</label>
+                    <select class="form-control" name="province" formControlName="province" id="field_province">
+                        <option value="Gauteng">Gauteng</option>
+                        <option value="Limpopo">Limpopo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_image">Image</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imageContentType')!.value + ';base64,' + editForm.get('image')!.value" style="max-height: 100px;" *ngIf="editForm.get('image')!.value" alt="form image"/>
+                        <div *ngIf="editForm.get('image')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('imageContentType')!.value }}, {{ byteSize(editForm.get('image')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('image', 'imageContentType', 'file_image')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_image" (change)="setFileData($event, 'image', true)" accept="image/*"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="image" id="field_image"
+                           formControlName="image"/>
+                    <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                           formControlName="imageContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_offerDate">Offer Date</label>
+                    <div class="d-flex">
+                        <input id="field_offerDate" type="datetime-local" class="form-control" name="offerDate" formControlName="offerDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('offerDate')!.invalid && (editForm.get('offerDate')!.dirty || editForm.get('offerDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('offerDate')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('offerDate')?.errors?.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_productType">Product Type</label>
+                    <select class="form-control" name="productType" formControlName="productType" id="field_productType">
+                        <option value="Fibre">Fibre</option>
+                        <option value="Data">Data</option>
+                        <option value="Voice">Voice</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div *ngIf="editForm.get('productType')!.invalid && (editForm.get('productType')!.dirty || editForm.get('productType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('productType')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeOfOffer">Type Of Offer</label>
+                    <select class="form-control" name="typeOfOffer" formControlName="typeOfOffer" id="field_typeOfOffer">
+                        <option value="LocationBased">LocationBased</option>
+                        <option value="Provincial">Provincial</option>
+                        <option value="Nationwide">Nationwide</option>
+                    </select>
+                    <div *ngIf="editForm.get('typeOfOffer')!.invalid && (editForm.get('typeOfOffer')!.dirty || editForm.get('typeOfOffer')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('typeOfOffer')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_offerType">Offer Type</label>
+                    <select class="form-control" name="offerType" formControlName="offerType" id="field_offerType">
+                        <option value="Prepaid">Prepaid</option>
+                        <option value="Postpaid">Postpaid</option>
+                    </select>
+                    <div *ngIf="editForm.get('offerType')!.invalid && (editForm.get('offerType')!.dirty || editForm.get('offerType')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('offerType')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_offerPurchaseLimitation">Offer Purchase Limitation</label>
+                    <select class="form-control" name="offerPurchaseLimitation" formControlName="offerPurchaseLimitation" id="field_offerPurchaseLimitation">
+                        <option value="All">All</option>
+                        <option value="Intergrated">Intergrated</option>
+                        <option value="SingleBearer">SingleBearer</option>
+                    </select>
+                    <div *ngIf="editForm.get('offerPurchaseLimitation')!.invalid && (editForm.get('offerPurchaseLimitation')!.dirty || editForm.get('offerPurchaseLimitation')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('offerPurchaseLimitation')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_natureOFOffer">Nature OF Offer</label>
+                    <select class="form-control" name="natureOFOffer" formControlName="natureOFOffer" id="field_natureOFOffer">
+                        <option value="RechargOffer">RechargOffer</option>
+                        <option value="NewCustomers">NewCustomers</option>
+                    </select>
+                    <div *ngIf="editForm.get('natureOFOffer')!.invalid && (editForm.get('natureOFOffer')!.dirty || editForm.get('natureOFOffer')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('natureOFOffer')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_offerPrice">Offer Price</label>
+                    <input type="number" class="form-control" name="offerPrice" id="field_offerPrice"
+                           formControlName="offerPrice"/>
+                    <div *ngIf="editForm.get('offerPrice')!.invalid && (editForm.get('offerPrice')!.dirty || editForm.get('offerPrice')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('offerPrice')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('offerPrice')?.errors?.min">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('offerPrice')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_offerValidity">Offer Validity</label>
+                    <select class="form-control" name="offerValidity" formControlName="offerValidity" id="field_offerValidity">
+                        <option value="OneDay">OneDay</option>
+                        <option value="OneWeek">OneWeek</option>
+                        <option value="OneMonth">OneMonth</option>
+                    </select>
+                    <div *ngIf="editForm.get('offerValidity')!.invalid && (editForm.get('offerValidity')!.dirty || editForm.get('offerValidity')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('offerValidity')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_offerAllocation">Offer Allocation</label>
+                    <input type="number" class="form-control" name="offerAllocation" id="field_offerAllocation"
+                           formControlName="offerAllocation"/>
+                    <div *ngIf="editForm.get('offerAllocation')!.invalid && (editForm.get('offerAllocation')!.dirty || editForm.get('offerAllocation')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('offerAllocation')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('offerAllocation')?.errors?.min">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('offerAllocation')?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_offerEndDate">Offer End Date</label>
+                    <div class="d-flex">
+                        <input id="field_offerEndDate" type="datetime-local" class="form-control" name="offerEndDate" formControlName="offerEndDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('offerEndDate')!.invalid && (editForm.get('offerEndDate')!.dirty || editForm.get('offerEndDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('offerEndDate')?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('offerEndDate')?.errors?.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_riskOfMarketShareLoss">Risk Of Market Share Loss</label>
+                    <select class="form-control" name="riskOfMarketShareLoss" formControlName="riskOfMarketShareLoss" id="field_riskOfMarketShareLoss">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                    <div *ngIf="editForm.get('riskOfMarketShareLoss')!.invalid && (editForm.get('riskOfMarketShareLoss')!.dirty || editForm.get('riskOfMarketShareLoss')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('riskOfMarketShareLoss')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

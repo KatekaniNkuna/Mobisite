@@ -1,0 +1,56 @@
+entity Form {
+    competitor CompetitorName required
+    province Province
+    image ImageBlob
+    offerDate Instant required //Date when pricing commenced (estimated)
+    productType ProductType required
+    typeOfOffer TypeOfOffer required
+    offerType OfferType required
+    offerPurchaseLimitation OfferPurchaseLimitation required
+    natureOFOffer NatureOFOffer required
+    offerPrice BigDecimal required min(0)
+    offerValidity OfferValidity required
+    offerAllocation BigDecimal required min(0)
+    offerEndDate Instant required
+    riskOfMarketShareLoss RiskOfMarketShareLoss required
+}
+
+enum CompetitorName {
+	MTN, Telkom, Other
+}
+
+enum Province {
+	Gauteng, Limpopo //And many more
+}
+
+enum ProductType {
+	Fibre, Data, Voice, Other
+}
+
+enum TypeOfOffer {
+	LocationBased, Provincial, Nationwide
+}
+
+enum OfferType {
+	Prepaid, Postpaid
+}
+
+enum OfferPurchaseLimitation {
+	All, Intergrated, SingleBearer
+}
+
+enum NatureOFOffer {
+	RechargOffer, NewCustomers
+}
+
+enum OfferValidity{
+	OneDay, OneWeek, OneMonth
+}
+
+enum RiskOfMarketShareLoss{
+	Low, Medium, High
+}
+
+service * with serviceClass 
+
+

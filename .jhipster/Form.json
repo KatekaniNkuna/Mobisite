@@ -1,0 +1,123 @@
+{
+  "name": "Form",
+  "fields": [
+    {
+      "fieldName": "competitor",
+      "fieldType": "CompetitorName",
+      "fieldValues": "MTN,Telkom,Other",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "province",
+      "fieldType": "Province",
+      "fieldValues": "Gauteng,Limpopo"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "offerDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "productType",
+      "fieldType": "ProductType",
+      "fieldValues": "Fibre,Data,Voice,Other",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "typeOfOffer",
+      "fieldType": "TypeOfOffer",
+      "fieldValues": "LocationBased,Provincial,Nationwide",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "offerType",
+      "fieldType": "OfferType",
+      "fieldValues": "Prepaid,Postpaid",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "offerPurchaseLimitation",
+      "fieldType": "OfferPurchaseLimitation",
+      "fieldValues": "All,Intergrated,SingleBearer",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "natureOFOffer",
+      "fieldType": "NatureOFOffer",
+      "fieldValues": "RechargOffer,NewCustomers",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "offerPrice",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": [
+        "required",
+        "min"
+      ],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "offerValidity",
+      "fieldType": "OfferValidity",
+      "fieldValues": "OneDay,OneWeek,OneMonth",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "offerAllocation",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": [
+        "required",
+        "min"
+      ],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "offerEndDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "riskOfMarketShareLoss",
+      "fieldType": "RiskOfMarketShareLoss",
+      "fieldValues": "Low,Medium,High",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20210122071559",
+  "entityTableName": "form",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
